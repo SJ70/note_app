@@ -1,0 +1,20 @@
+.App {
+    display: grid;
+    grid-template-columns: var(--side-bar-width) auto;
+    grid-template-rows: 100vh;
+    height: 100%;
+}
+
+.round-border {
+    border-radius: 1em;
+    border: 1px solid gainsboro;
+}
+
+.spring-on-hover {
+    transition: all .5s;
+}
+
+.spring-on-hover:hover {
+    transform: translate(-.25em, -.25em);
+    box-shadow: .25em .25em gainsboro;
+}

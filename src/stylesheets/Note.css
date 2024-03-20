@@ -1,0 +1,35 @@
+.note {
+    padding: 1em 1.2em 1em 1.2em;
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    height: 12em;
+}
+
+.note-title {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.note-content {
+    font-weight: 500;
+    font-size: 0.85em;
+    margin-top: .5em;
+
+    flex: 1;
+}
+
+.note-priority {
+    position: absolute;
+    right: 5em;
+    top: 1.8em;
+
+    font-weight: 500;
+    font-size: 0.7em;
+}
+
+.note-date {
+    font-size: 0.8em;
+    opacity: 50%;
+}

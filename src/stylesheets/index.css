@@ -1,11 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@100..900&display=swap');
 
+:root {
+  --theme-color: rgb(167, 202, 255);
+  --side-bar-width: 15em;
+}
+
 body {
   margin: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, button {
+body, button, input {
   font-family: "Noto Sans KR", sans-serif;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+}
+
+button {
+  background-color: var(--theme-color);
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all .5s;
 }

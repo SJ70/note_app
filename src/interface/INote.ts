@@ -4,10 +4,10 @@ export interface INote {
     id: number,
     title: string,
     content: string,
-    backgroundColor: string,
-    date: Date,
     tags: ITag[],
+    backgroundColor: string,
     priority: number
+    date: Date,
 }
 
 export class Note implements INote {
@@ -16,18 +16,18 @@ export class Note implements INote {
     id: number;
     title: string;
     content: string;
-    backgroundColor: string;
-    date: Date;
     tags: ITag[];
+    backgroundColor: string;
     priority: number;
+    date: Date;
 
-    constructor(title: string, content: string, backgroundColor: string, tags: ITag[], priority: number) {
+    constructor(title: string, content: string, tags: ITag[], backgroundColor: string, priority: number) {
         this.id = Note.idValue++;
         this.title = title;
         this.content = content;
-        this.backgroundColor = backgroundColor;
-        this.date = new Date();
         this.tags = tags;
+        this.backgroundColor = backgroundColor;
         this.priority = priority;
+        this.date = new Date();
     }
 }

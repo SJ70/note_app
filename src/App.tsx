@@ -1,13 +1,15 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './stylesheets/App.css';
+import Notes from './components/Notes';
+import Sidebar from './components/Sidebar';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header"></header>
+      <Sidebar/>
       <BrowserRouter>
         <Routes>
-          <Route path='/' element={<></>}></Route>
+          <Route path='/' element={<Notes selectedTag={null}></Notes>}></Route>
           <Route path='/:tag' element={<></>}></Route>
         </Routes>
       </BrowserRouter>
