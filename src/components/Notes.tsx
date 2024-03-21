@@ -17,12 +17,14 @@ const Notes: React.FC<NotesProps> = (props) => {
     const title = props.selectedTag ? props.selectedTag.name : 'Notes';
 
     return (
-        <div>
+        <div className='notes-container'>
             <Header title={title} selectedTag={props.selectedTag}></Header>
-            <p className='sub-kind'>All Notes <span>({notes.length})</span></p>
-            <ul className='notes'>
-                {notes.map((note: INote) => (<Note note={note}/>))}
-            </ul>
+            <div className='notes-wrapper'>
+                <p className='sub-kind'>All Notes <span>({notes.length})</span></p>
+                <ul className='notes'>
+                    {notes.map((note: INote) => (<Note note={note}/>))}
+                </ul>
+            </div>
         </div>
     )
 }

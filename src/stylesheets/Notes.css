@@ -1,9 +1,21 @@
+.notes-container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.notes-wrapper {
+    overflow-y: scroll;
+    flex: 1
+}
+
 .notes {
     width: calc(100% - 2em);
+
     display: grid;
     grid-template-columns: repeat(4, calc(25% - 0.75em));
     gap: 1em;
-    padding: 0.5em 1em 0.5em 1em;
+    padding: 1em;
     margin: 0;
 }
 
