@@ -1,0 +1,45 @@
+.backdrop {
+    position: absolute;
+    top: -1px;
+    left: 0%;
+    width: 100vw;
+    height: calc(100vh + 1px);
+
+    z-index: -999;
+
+    backdrop-filter: blur(3px);
+    background-color: rgba(0, 0, 0, .2);
+}
+
+@keyframes disappearAnim {
+    0% {
+        z-index: 10;
+        opacity: 1;
+    }
+    99% {
+        z-index: 10;
+        opacity: 0;
+    }
+    100% {
+        z-index: -999;
+    }
+}
+
+.disappear {
+    animation: disappearAnim .5s ease-in forwards;
+}
+
+@keyframes appearAnim {
+    0% {
+        z-index: 10;
+        opacity: 0;
+    }
+    100% {
+        z-index: 10;
+        opacity: 1;
+    }
+}
+
+.appear {
+    animation: appearAnim .5s ease-in forwards;
+}

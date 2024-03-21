@@ -1,0 +1,40 @@
+.tags-form {
+    position: inherit;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    z-index: 10;
+
+    background-color: white;
+    padding: 1em 1.25em 1em 1.25em;
+    width: 30%;
+}
+
+.tags-form-type {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+.tags {
+    display: flex;
+    flex-direction: column;
+    overflow-x: scroll;
+}
+
+.tag {
+    display: flex;
+    flex-direction: row;
+}
+
+.tag > p {
+    flex: 1;
+}
+
+.selected {
+    background-color: blue;
+}
+
+.unselected {
+    background-color: red;
+}

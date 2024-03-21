@@ -1,3 +1,9 @@
 .side-bar {
     background-color: var(--theme-color);
+    padding: 0.75em 1.5em 0.75em 1.5em;
+}
+
+.title {
+    font-weight: 600;
+    font-size: 1.4em;
 }

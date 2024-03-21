@@ -14,7 +14,7 @@ export class Tag implements ITag{
     notes: INote[];
 
     constructor(name: string) {
-        this.id = Tag.idValue;
+        this.id = Tag.idValue++;
         this.name = name;
         this.notes = [];
     }

@@ -22,13 +22,12 @@ const Notes: React.FC<NotesProps> = (props) => {
             <div className='notes-wrapper'>
                 <p className='sub-kind'>All Notes <span>({notes.length})</span></p>
                 <ul className='notes'>
-                    {notes.map((note: INote) => (<Note note={note}/>))}
+                    {notes.map((note: INote) => (<Note key={note.id} note={note}/>))}
                 </ul>
             </div>
         </div>
     )
 }
-
 
 type NoteProps = {
     note: INote
@@ -39,7 +38,11 @@ const Note: React.FC<NoteProps> = ({note}) => {
         <li className='note round-border spring-on-hover' style={{backgroundColor: note.backgroundColor}} key={note.id}>
             <p className='note-title'>{note.title}</p>
             <p className='note-content'>{note.content}</p>
-            <p className='note-tags'>{note.tags.toString()}</p>
+            <ul className='note-tags'>
+                {note.tags.map(tag => 
+                    <li className='note-tag round-border'>{tag.name}</li>
+                )}
+            </ul>
             <p className='note-date'>{formatString(note.date)}</p>
             <p className='note-priority'>{note.priority}</p>
         </li>
