@@ -40,7 +40,7 @@ const Note: React.FC<NoteProps> = ({note}) => {
             <p className='note-content'>{note.content}</p>
             <ul className='note-tags'>
                 {note.tags.map(tag => 
-                    <li className='note-tag round-border'>{tag.name}</li>
+                    <li key={tag.id} className='note-tag round-border'>{tag.name}</li>
                 )}
             </ul>
             <p className='note-date'>{formatString(note.date)}</p>

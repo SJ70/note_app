@@ -47,7 +47,7 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({visible, setVisible, selectedT
                 <p className='tags-form-type'>ADD Tags</p>
                 <button className='close-btn' onClick={() => setVisible(false)}>X</button>
                 <input type='text' placeholder='new tag...' value={inputTagName} onChange={(e) => setInputTagName(e.target.value)} onKeyPress={(e) => onPressEnter(e)}></input>
-                <ul className='tags'>
+                <ul className='tags-from-tags'>
                     {tags.map((tag) => 
                         <TagEl key={tag.id} visible={visible} tag={tag} entireTags={tags} selectedTags={selectedTags} onAddTag={onAddTag} onRemoveTag={onRemoveTag}/>
                     )}
@@ -75,7 +75,7 @@ const TagEl: React.FC<TagElProps> = ({visible, tag, entireTags, selectedTags, on
     }, [visible])
 
     return (
-        <li key={tag.id} className={`${isSelected ? 'selected' : 'unselected'} tag`}>
+        <li key={tag.id} className={`${isSelected ? 'selected' : 'unselected'} tags-from-tag`}>
             <p>{tag.name}</p>
             {
                 isSelected

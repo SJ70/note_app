@@ -14,7 +14,7 @@ const tagsReducer = handleActions<ITag[], any> ({
         return [...state, tag];
     },
     [ADD_NOTE]: (state, {payload: {tag, note}}) => {
-        state.find(tag)?.notes.push(note);
+        state.find(t => t === tag)?.notes.push(note);
         return [...state];
     }
 }, initialState)

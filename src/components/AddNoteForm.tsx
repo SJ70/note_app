@@ -54,11 +54,15 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     const dispatch = useDispatch();
 
     const onAddNote = (note: INote) => dispatch(addNote({note}) as Action);
+    const onAddNoteInTag = (tag: ITag, note: INote) => dispatch(addNoteInTag({tag, note}) as Action);
 
     const onSubmit = () => {
         if (!visible) return;
         const note: INote = new Note(title, content, tags, backgroundColor, priority);
         onAddNote(note);
+        for (const tag of tags) {
+            onAddNoteInTag(tag, note);
+        }
         setVisible(false);
     }
 

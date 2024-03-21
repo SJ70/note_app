@@ -16,18 +16,17 @@
     font-size: 1.1em;
 }
 
-.tags {
+.tags-from-tags {
     display: flex;
     flex-direction: column;
-    overflow-x: scroll;
 }
 
-.tag {
+.tags-from-tag {
     display: flex;
     flex-direction: row;
 }
 
-.tag > p {
+.tags-from-tag > p {
     flex: 1;
 }
 
