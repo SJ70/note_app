@@ -13,6 +13,18 @@ type AddNoteFormProps = {
     setVisible: Function
 }
 
+type BackgroundColor = {
+    value: string,
+    name: string,
+}
+
+const backgroundColors: BackgroundColor[] = [
+    {value: 'white', name: 'White'},
+    {value: '#ffdddd', name: 'Red'},
+    {value: '#ddfff0', name: 'Green'},
+    {value: '#ddf0ff', name: 'Blue'},
+];
+
 const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
 
     const notesCount = useSelector((state: RootState) => state.notes.length) + 1;
@@ -20,14 +32,14 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     const [title, setTitle] = useState<string>(`노트 ${notesCount}`);
     const [content, setContent] = useState<string>(`노트 ${notesCount}`);
     const [tags, setTags] = useState<ITag[]>([]);
-    const [backgroundColor, setBackgroundColor] = useState<string>('white');
+    const [backgroundColor, setBackgroundColor] = useState<string>(backgroundColors[0].value);
     const [priority, setPriority] = useState<number>(100);
 
     const initForm = () => {
         setTitle(`노트 ${notesCount}`);
         setContent(`노트 ${notesCount}`);
         setTags([]);
-        setBackgroundColor('white');
+        setBackgroundColor(backgroundColors[0].value);
         setPriority(100);
     }
 
@@ -54,9 +66,18 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
             <div className='note-form round-border'>
                 <p id='form-type'>노트 생성하기</p>
                 <input id='form-title' onChange={(e) => setTitle(e.target.value)} value={title}></input>
-                <input id='form-content' onChange={(e) => setContent(e.target.value)} value={content}></input>
+                <input id='form-content' onChange={(e) => setContent(e.target.value)} value={content} style={{backgroundColor: `${backgroundColor}`}}></input>
                 <div>add-tag</div>
-                <div>set-bg-color</div>
+                <div>
+                    배경색
+                    <select value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)}>
+                        {backgroundColors.map(bgc => {
+                            return (
+                                <option key={bgc.name} value={bgc.value}>{bgc.name}</option>
+                            )
+                        })}
+                    </select>
+                </div>
                 <div>set-priority</div>
                 <button id='form-submit' type='submit' onClick={onSubmit}>생성하기</button>
             </div>

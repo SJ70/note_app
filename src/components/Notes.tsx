@@ -34,7 +34,7 @@ type NoteProps = {
 
 const Note: React.FC<NoteProps> = ({note}) => {
     return (
-        <li className='note round-border spring-on-hover' key={note.id}>
+        <li className='note round-border spring-on-hover' style={{backgroundColor: note.backgroundColor}} key={note.id}>
             <p className='note-title'>{note.title}</p>
             <p className='note-content'>{note.content}</p>
             <p className='note-tags'>{note.tags.toString()}</p>
