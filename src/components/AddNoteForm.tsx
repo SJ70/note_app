@@ -53,6 +53,7 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     const onAddNoteInTag = (tag: ITag, note: INote) => dispatch(addNoteInTag({tag, note}) as Action);
 
     const onSubmit = () => {
+        if (!visible) return;
         const note: INote = new Note(title, content, tags, backgroundColor, priority);
         onAddNote(note);
         for (const tag of tags) {
@@ -62,7 +63,7 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     }
 
     return (
-        <div className='backdrop' style={{zIndex: (visible ? 10 : -999), opacity: (visible ? 1 : 0)}}>
+        <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
             <div className='note-form round-border'>
                 <p id='form-type'>노트 생성하기</p>
                 <input id='form-title' onChange={(e) => setTitle(e.target.value)} value={title}></input>

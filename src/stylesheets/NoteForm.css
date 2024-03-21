@@ -7,8 +7,6 @@
 
     backdrop-filter: blur(3px);
     background-color: rgba(0, 0, 0, .2);
-
-    transition: opacity .5s;
 }
 
 .note-form {
@@ -26,6 +24,39 @@
     display: grid;
     grid-template-rows: auto auto 30vh auto auto;
     grid-template-columns: repeat(3, 1fr);
+}
+
+@keyframes disappearAnim {
+    0% {
+        z-index: 10;
+        opacity: 1;
+    }
+    99% {
+        z-index: 10;
+        opacity: 0;
+    }
+    100% {
+        z-index: -999;
+    }
+}
+
+.disappear {
+    animation: disappearAnim .5s ease-in forwards;
+}
+
+@keyframes appearAnim {
+    0% {
+        z-index: 10;
+        opacity: 0;
+    }
+    100% {
+        z-index: 10;
+        opacity: 1;
+    }
+}
+
+.appear {
+    animation: appearAnim .5s ease-in forwards;
 }
 
 #form-type, #form-title, #form-content, #form-submit {
