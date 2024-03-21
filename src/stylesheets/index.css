@@ -2,6 +2,7 @@
 
 :root {
   --theme-color: rgb(167, 202, 255);
+  --light-gray: rgb(180, 180, 180);
   --side-bar-width: 15em;
 }
 

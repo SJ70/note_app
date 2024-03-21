@@ -6,6 +6,9 @@ import { RootState } from '../modules'
 import { addTag } from '../modules/tags'
 import { Action } from 'redux'
 import { useEffect, useState } from 'react'
+import { ReactComponent as AddSvg } from '../svgs/add_700.svg';
+import { ReactComponent as RemoveSvg } from '../svgs/remove_700.svg';
+import { ReactComponent as CloseSvg } from '../svgs/close_700.svg';
 
 type SetTagsFormProps = {
     visible: boolean,
@@ -45,9 +48,9 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({visible, setVisible, selectedT
         <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
             <div className='round-border tags-form'>
                 <p className='tags-form-type'>ADD Tags</p>
-                <button className='close-btn' onClick={() => setVisible(false)}>X</button>
+                <CloseSvg className='close-btn' onClick={() => setVisible(false)}/>
                 <input type='text' placeholder='new tag...' value={inputTagName} onChange={(e) => setInputTagName(e.target.value)} onKeyPress={(e) => onPressEnter(e)}></input>
-                <ul className='tags-from-tags'>
+                <ul className='tags-form-tags'>
                     {tags.map((tag) => 
                         <TagEl key={tag.id} visible={visible} tag={tag} entireTags={tags} selectedTags={selectedTags} onAddTag={onAddTag} onRemoveTag={onRemoveTag}/>
                     )}
@@ -74,15 +77,16 @@ const TagEl: React.FC<TagElProps> = ({visible, tag, entireTags, selectedTags, on
         setIsSelected(selectedTags.includes(tag));
     }, [visible])
 
+    const handleOnClick = () => {
+        isSelected ? onRemoveTag(tag) : onAddTag(tag);
+        setIsSelected(!isSelected);
+    }
+
     return (
-        <li key={tag.id} className={`${isSelected ? 'selected' : 'unselected'} tags-from-tag`}>
-            <p>{tag.name}</p>
-            {
-                isSelected
-                ? <button onClick={() => { onRemoveTag(tag); setIsSelected(false); }}>-</button>
-                : <button onClick={() => { onAddTag(tag); setIsSelected(true); }}>+</button>
-            }
-        </li>
+        <button key={tag.id} className={`${isSelected ? 'selected' : 'unselected'} tags-form-tag`} onClick={handleOnClick}>
+            <p className='tags-form-tag-name'>{tag.name}</p>
+            {isSelected ? <RemoveSvg className='svg'/> : <AddSvg className='svg'/>}
+        </button>
     )
 }
 

@@ -41,5 +41,5 @@
 }
 
 .appear {
-    animation: appearAnim .5s ease-in forwards;
+    animation: appearAnim .25s ease-in forwards;
 }

@@ -7,33 +7,108 @@
     z-index: 10;
 
     background-color: white;
-    padding: 1em 1.25em 1em 1.25em;
+    padding: 1.25em 0 1.25em 0;
     width: 30%;
 }
 
 .tags-form-type {
     font-weight: 600;
-    font-size: 1.1em;
+    font-size: 1.2em;
+    margin-left: 1.25rem;
 }
 
-.tags-from-tags {
-    display: flex;
-    flex-direction: column;
+.tags-form > input {
+    width: calc(100% - 2.5rem);
+    margin: 1.25rem;
+    border: none;
+    border-bottom: 2px solid gray;
+    box-sizing: border-box;
+    outline: none;
+
+    font-size: 1em;
+    font-weight: 500;;
 }
 
-.tags-from-tag {
+.tags-form > input::placeholder {
+    color: var(--light-gray);
+}
+
+.tags-form-tags {
     display: flex;
     flex-direction: row;
+    max-height: 50vh;
+    flex-wrap: wrap;
+    overflow-y: scroll;
+
+    margin: 0;
 }
 
-.tags-from-tag > p {
+.tags-form-tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 3em;
+    gap: .5em;
+    padding: 0 1.25rem 0 1.25rem;
+
+    background-color: transparent;
+}
+
+.tags-form-tag-name {
     flex: 1;
+    text-align: start;
+    font-size: 1.2em;
+
+    transition: all .5s;
 }
 
-.selected {
-    background-color: blue;
+.tags-form-tag > .svg {
+    font-size: 1.0em;
+    fill: var(--light-gray);
 }
 
-.unselected {
-    background-color: red;
+.tags-form-tag > .svg {
+    transition: all .5s;
+}
+
+.selected > .tags-form-tag-name {
+    font-weight: 600;
+}
+
+.unselected > .tags-form-tag-name {
+    color: var(--light-gray);
+}
+
+.tags-form-tag:hover {
+    background-color: var(--theme-color);
+}
+
+.tags-form-tag:hover > .svg {
+    transform: rotate(180deg);
+    fill: gray;
+}
+
+.unselected:hover > .tags-form-tag-name {
+    font-weight: 500;
+    color: black;
+}
+
+.close-btn {
+    position: absolute;
+    right: 2.25rem;
+    top: 2.25rem;
+    font-size: 1.75em;
+    transform: translate(50%, -50%);
+
+    cursor: pointer;
+    fill: var(--light-gray);
+
+    transition: all .5s;
+}
+
+.close-btn:hover {
+    font-size: 2.25em;
+    transform: translate(50%, -50%) rotate(180deg);
+    fill: grey;
 }
