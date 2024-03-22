@@ -22,8 +22,8 @@
 
 .note-priority {
     position: absolute;
-    right: 5em;
-    top: 1.8em;
+    right: 4em;
+    top: 1.65em;
 
     font-weight: 500;
     font-size: 0.7em;
@@ -46,4 +46,28 @@
     padding: .2em .5em .2em .5em;
     background-color: ghostwhite;
     height: 1.5em;
+}
+
+#switch-pin-btn {
+    right: 1.5rem;
+    top: 1.75rem;
+    font-size: 1.5em;
+    transform: translate(50%, -50%);
+
+    position: absolute;
+    transition: all .5s;
+
+    cursor: pointer;
+}
+
+#switch-pin-btn .pinned{
+    fill: var(--theme-color);
+}
+
+#switch-pin-btn .unpinned{
+    fill: var(--light-gray);
+}
+
+#switch-pin-btn .unpinned:hover {
+    fill: var(--theme-color);
 }
