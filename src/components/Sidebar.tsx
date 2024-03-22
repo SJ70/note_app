@@ -5,22 +5,28 @@ import { RootState } from '../modules';
 import { ITag } from '../interface/ITag';
 import { ReactComponent as TagSvg } from '../svgs/sell_500.svg';
 import { ReactComponent as NotesSvg } from '../svgs/note_stack_500.svg';
+import { useState } from 'react';
+
+const ALL_NOTES_PAGE_ID = -1;
 
 const Sidebar = () => {
 
     const tags: ITag[] = useSelector((state: RootState) => state.tags);
 
+    const [selectedPageId, setSelectedPageId] = useState<Number>(ALL_NOTES_PAGE_ID);
+    console.log(selectedPageId)
+
     return (
         <div className='side-bar'>
             <p className='side-bar-title'>Note App</p>
-            <Link className='side-bar-btn' to={'/'}>
+            <Link className={`${selectedPageId===ALL_NOTES_PAGE_ID ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(ALL_NOTES_PAGE_ID)} to={'/'}>
                 <NotesSvg className='svg'/>
                 <span>Notes</span>
             </Link>
             <ul className='side-bar-tags'>
                 {tags.map(tag => (
                     <li>
-                        <Link className='side-bar-btn' key={tag.id} to={`/tag=${tag.id}`}>
+                        <Link className={`${selectedPageId===tag.id ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(tag.id)} key={tag.id} to={`/tag/${tag.id}`}> 
                             <TagSvg className='svg'/>
                             <span>{tag.name}</span>
                         </Link>

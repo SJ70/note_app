@@ -10,21 +10,24 @@ import { ReactComponent as UnpinnedSvg } from '../svgs/star_FILL0_400.svg';
 import { ReactComponent as PinnedSvg } from '../svgs/star_FILL1_500.svg';
 import { Action } from 'redux';
 import { switchPin } from '../modules/notes';
+import { useParams } from 'react-router-dom';
 
-type NotesProps = {
-    selectedTag: ITag | null
-}
+const Notes = () => {
 
-const Notes: React.FC<NotesProps> = (props) => {
+    const { selectedTagId } = useParams();
 
-    const notes = useSelector((state: RootState) => state.notes);
-    const title = props.selectedTag ? props.selectedTag.name : 'Notes';
+    const allTags = useSelector((state: RootState) => state.tags);
+    const allNotes = useSelector((state: RootState) => state.notes);
 
-    const pinnedNotes = notes.filter(note => note.pinned);
+    const selectedTag = allTags.find(tag => tag.id === Number(selectedTagId));
+    const selectedNotes = selectedTag ? selectedTag.notes : allNotes;
+    const title = selectedTag ? selectedTag.name : 'Notes';
+
+    const pinnedNotes = selectedNotes.filter(note => note.pinned);
 
     return (
         <div className='notes-container'>
-            <Header title={title} selectedTag={props.selectedTag}></Header>
+            <Header title={title} selectedTag={selectedTag}></Header>
             <div className='notes-wrapper'>
 
                 <p className='sub-kind'>Pinned Notes <span>({pinnedNotes.length})</span></p>
@@ -32,9 +35,9 @@ const Notes: React.FC<NotesProps> = (props) => {
                     {pinnedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
                 </ul>
 
-                <p className='sub-kind'>All Notes <span>({notes.length})</span></p>
+                <p className='sub-kind'>All Notes <span>({selectedNotes.length})</span></p>
                 <ul className='notes'>
-                    {notes.map((note: INote) => (<Note key={note.id} note={note}/>))}
+                    {selectedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
                 </ul>
 
             </div>

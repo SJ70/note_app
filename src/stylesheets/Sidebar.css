@@ -23,6 +23,8 @@
     height: 3.5rem;
     width: auto;
     padding-left: 2rem;
+    
+    border-left: 0em solid var(--theme-color);
 
     transition: all .5s;
 }
@@ -31,8 +33,15 @@
     font-size: 1.4em;
 }
 
-.side-bar-btn:hover {
+.side-bar-btn:hover:not(.selected-page) {
     background-color: rgba(0, 0, 0, 0.1);
-    font-size: 1.2em;
+    font-size: 1.1em;
     font-weight: 600;
+}
+
+.selected-page {
+    background-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.15em;
+    font-weight: 700;
+    border-left: .5rem solid white;
 }

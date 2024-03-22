@@ -9,8 +9,8 @@ function App() {
       <BrowserRouter>
       <Sidebar/>
         <Routes>
-          <Route path='/' element={<Notes selectedTag={null}></Notes>}></Route>
-          <Route path='/tag=:tag' element={<></>}></Route>
+          <Route path='/' element={<Notes/>}></Route>
+          <Route path='/tag/:selectedTagId' element={<Notes/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

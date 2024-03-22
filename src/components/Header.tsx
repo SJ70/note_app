@@ -5,7 +5,7 @@ import '../stylesheets/Header.css'
 
 type HeaderProps = {
     title: string
-    selectedTag: ITag | null
+    selectedTag: ITag | undefined
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
