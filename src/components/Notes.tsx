@@ -56,7 +56,7 @@ const Note: React.FC<NoteProps> = ({note}) => {
         <li className='note round-border spring-on-hover' style={{backgroundColor: note.backgroundColor}} key={note.id}>
             <p className='note-title'>{note.title}</p>
             <p className='note-content'>{note.content}</p>
-            <ul className='note-tags'>
+            <ul className='note-tags' style={note.tags.length === 0 ? {display: 'none'} : {}}>
                 {note.tags.map(tag => 
                     <li key={tag.id} className='note-tag round-border'>{tag.name}</li>
                 )}

@@ -4,7 +4,7 @@
 
     display: flex;
     flex-direction: column;
-    height: 12em;
+    height: 13em;
 
     gap: .5em;
 }
@@ -18,6 +18,7 @@
     font-weight: 500;
     font-size: 0.85em;
     flex: 1;
+    overflow-y: hidden;
 }
 
 .note-priority {
