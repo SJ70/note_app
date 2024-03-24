@@ -8,29 +8,51 @@ import '../stylesheets/Tags.css'
 import '../stylesheets/Note.css'
 import { ReactComponent as UnpinnedSvg } from '../svgs/star_FILL0_400.svg';
 import { ReactComponent as PinnedSvg } from '../svgs/star_FILL1_500.svg';
+import { ReactComponent as DeleteSvg } from '../svgs/delete_500.svg';
+import { ReactComponent as DeleteForeverSvg } from '../svgs/delete_forever_500.svg';
 import { Action } from 'redux';
-import { switchPin } from '../modules/notes';
+import { deleteForeverNote, deleteNote, switchPin } from '../modules/notes';
 import { useParams } from 'react-router-dom';
 
-const Notes = () => {
+export enum NotesType {
+    ALL, TAGGED, DELETED
+}
 
+type NotesProps = {
+    notesType: NotesType
+}
+
+const Notes: React.FC<NotesProps> = ({notesType}) => {
+
+    let notes = useSelector((state: RootState) => state.notes);
+    let title = notesType===NotesType.DELETED ? 'Deleted Notes' : 'Notes';
+    const selectedTags = [];
+
+    // all: 삭제되지 않은 , deleted: 삭제된
+    notes = notes.filter(note => note.deleted === (notesType === NotesType.DELETED));
+
+    // 태그 있다면 필터
     const { selectedTagId } = useParams();
-
     const allTags = useSelector((state: RootState) => state.tags);
-    const allNotes = useSelector((state: RootState) => state.notes);
-
     const selectedTag = allTags.find(tag => tag.id === Number(selectedTagId));
-    const selectedNotes = selectedTag ? selectedTag.notes : allNotes;
-    const title = selectedTag ? selectedTag.name : 'Notes';
+    if (selectedTag) {
+        notes = selectedTag.notes;
+        title = selectedTag.name;
+        selectedTags.push(selectedTag);
+    }
 
+    // 검색어 필터
     const [searchingWord, setSearchingWord] = useState<string>('');
-    const searchedNotes = searchingWord.length === 0 ? selectedNotes : selectedNotes.filter(note => note.content.includes(searchingWord) || note.title.includes(searchingWord));
+    if (searchingWord.length === 0) {
+        notes = notes.filter(note => note.content.includes(searchingWord) || note.title.includes(searchingWord));
+    }
 
-    const pinnedNotes = searchedNotes.filter(note => note.pinned);
+    // 고정된 노트
+    const pinnedNotes = notes.filter(note => note.pinned);
 
     return (
         <div className='notes-container'>
-            <Header title={title} selectedTag={selectedTag}></Header>
+            <Header title={title} notesType={notesType} selectedTags={selectedTags}></Header>
             <div className='notes-wrapper'>
 
                 <div className='searching-bar-container'>
@@ -39,12 +61,12 @@ const Notes = () => {
 
                 <p className='sub-kind'>Pinned Notes <span>({pinnedNotes.length})</span></p>
                 <ul className='notes'>
-                    {pinnedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
+                    {pinnedNotes.map((note: INote) => (<Note key={note.id} notesType={notesType} note={note}/>))}
                 </ul>
 
-                <p className='sub-kind'>All Notes <span>({searchedNotes.length})</span></p>
+                <p className='sub-kind'>All Notes <span>({notes.length})</span></p>
                 <ul className='notes'>
-                    {searchedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
+                    {notes.map((note: INote) => (<Note key={note.id} notesType={notesType} note={note}/>))}
                 </ul>
 
             </div>
@@ -53,14 +75,18 @@ const Notes = () => {
 }
 
 type NoteProps = {
+    notesType: NotesType
     note: INote
 }
 
-const Note: React.FC<NoteProps> = ({note}) => {
+const Note: React.FC<NoteProps> = ({notesType, note}) => {
 
     const dispatch = useDispatch();
     
     const onSwitchPin = (note: INote) => dispatch(switchPin({note}) as Action);
+
+    const onDeleteNote = (note: INote) => dispatch(deleteNote({note}) as Action);
+    const onDeleteForeverNote = (note: INote) => dispatch(deleteForeverNote({note}) as Action);
 
     return (
         <li className='note round-border spring-on-hover' style={{backgroundColor: note.backgroundColor}} key={note.id}>
@@ -75,6 +101,13 @@ const Note: React.FC<NoteProps> = ({note}) => {
             <p className='note-priority'>{note.priority}</p>
             <div id='switch-pin-btn' onClick={() => onSwitchPin(note)}>
                 {note.pinned ? <PinnedSvg className='pinned'/> : <UnpinnedSvg className='unpinned'/>}
+            </div>
+            <div className='etc-btns'>
+                {
+                    notesType===NotesType.DELETED 
+                    ? <DeleteForeverSvg onClick={() => onDeleteForeverNote(note)} className='svg'/>
+                    : <DeleteSvg onClick={() => onDeleteNote(note)} className='svg'/>
+                }
             </div>
         </li>
     )

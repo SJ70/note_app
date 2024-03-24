@@ -46,7 +46,7 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({visible, setVisible, selectedT
     }
 
     return (
-        <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
+        <div className={`backdrop ${visible===null ? '' : visible ? 'appear' : 'disappear'}`}>
             <div className='round-border form tags-form'>
                 <p className='form-title'>태그 수정하기</p>
                 <CloseSvg className='close-btn' onClick={() => setVisible(false)}/>

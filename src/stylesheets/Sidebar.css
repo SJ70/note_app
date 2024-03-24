@@ -45,3 +45,7 @@
     font-weight: 700;
     border-left: .5rem solid white;
 }
+
+.side-bar-tags {
+    flex: 1;
+}

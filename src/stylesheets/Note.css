@@ -58,3 +58,21 @@
 #switch-pin-btn .unpinned:hover {
     fill: var(--theme-color);
 }
+
+.etc-btns {
+    font-size: 1.5em;
+    position: absolute;
+    right: .5em;
+    bottom: .5em;
+    display: flex;
+}
+
+.etc-btns > .svg {
+    fill: var(--light-gray);
+    transition: all .5s;
+    cursor: pointer;
+}
+
+.etc-btns > .svg:hover {
+    fill: grey
+}

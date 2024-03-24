@@ -6,6 +6,8 @@ header {
     border-bottom: 2px solid gainsboro;
 
     background-color: white;
+
+    height: 2em;
 }
 
 .header-title {

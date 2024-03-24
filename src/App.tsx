@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './stylesheets/App.css';
-import Notes from './components/Notes';
+import Notes, { NotesType } from './components/Notes';
 import Sidebar from './components/Sidebar';
 
 function App() {
@@ -9,8 +9,9 @@ function App() {
       <BrowserRouter>
       <Sidebar/>
         <Routes>
-          <Route path='/' element={<Notes/>}></Route>
-          <Route path='/tag/:selectedTagId' element={<Notes/>}></Route>
+          <Route path='/' element={<Notes notesType={NotesType.ALL}/>}></Route>
+          <Route path='/tag/:selectedTagId' element={<Notes notesType={NotesType.TAGGED}/>}></Route>
+          <Route path='/deleted' element={<Notes notesType={NotesType.DELETED}/>}></Route>
         </Routes>
       </BrowserRouter>
     </div>

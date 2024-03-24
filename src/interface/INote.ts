@@ -9,6 +9,7 @@ export interface INote {
     priority: number
     date: Date,
     pinned: boolean;
+    deleted: boolean;
 }
 
 export class Note implements INote {
@@ -22,6 +23,7 @@ export class Note implements INote {
     priority: number;
     date: Date;
     pinned: boolean;
+    deleted: boolean;
 
     constructor(title: string, content: string, tags: ITag[], backgroundColor: string, priority: number) {
         this.id = Note.idValue++;
@@ -32,5 +34,6 @@ export class Note implements INote {
         this.priority = priority;
         this.date = new Date();
         this.pinned = false;
+        this.deleted = false;
     }
 }
