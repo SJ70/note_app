@@ -1,9 +1,8 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../modules';
 import { INote } from '../interface/INote';
 import Header from './Header';
-import { ITag } from '../interface/ITag';
 import '../stylesheets/Notes.css'
 import '../stylesheets/Note.css'
 import { ReactComponent as UnpinnedSvg } from '../svgs/star_FILL0_400.svg';
@@ -23,21 +22,28 @@ const Notes = () => {
     const selectedNotes = selectedTag ? selectedTag.notes : allNotes;
     const title = selectedTag ? selectedTag.name : 'Notes';
 
-    const pinnedNotes = selectedNotes.filter(note => note.pinned);
+    const [searchingWord, setSearchingWord] = useState<string>('');
+    const searchedNotes = searchingWord.length === 0 ? selectedNotes : selectedNotes.filter(note => note.content.includes(searchingWord) || note.title.includes(searchingWord));
+
+    const pinnedNotes = searchedNotes.filter(note => note.pinned);
 
     return (
         <div className='notes-container'>
             <Header title={title} selectedTag={selectedTag}></Header>
             <div className='notes-wrapper'>
 
+                <div className='searching-bar-container'>
+                    <input className='searching-bar round-border' placeholder='검색어를 입력하세요.' value={searchingWord} onChange={(e) => setSearchingWord(e.target.value)}></input>
+                </div>
+
                 <p className='sub-kind'>Pinned Notes <span>({pinnedNotes.length})</span></p>
                 <ul className='notes'>
                     {pinnedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
                 </ul>
 
-                <p className='sub-kind'>All Notes <span>({selectedNotes.length})</span></p>
+                <p className='sub-kind'>All Notes <span>({searchedNotes.length})</span></p>
                 <ul className='notes'>
-                    {selectedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
+                    {searchedNotes.map((note: INote) => (<Note key={note.id} note={note}/>))}
                 </ul>
 
             </div>

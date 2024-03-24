@@ -20,7 +20,7 @@
 }
 
 .sub-kind {
-    margin-left: 1.5em;
+    margin: 0 1.5em 0 1.5em;
     font-weight: 500;
     font-size: 1.1em;
     color: grey;
@@ -28,6 +28,17 @@
 
 .sub-kind > span {
     font-size: 0.75em;
+}
+
+.searching-bar-container {
+    margin: 1em;
+}
+
+.searching-bar {
+    width: stretch;
+    padding: .5em 1em .5em 1em;
+    border-radius: .75em;
+    outline: none;
 }
 
 @media (width < 1540px) {
