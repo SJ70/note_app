@@ -21,7 +21,7 @@
     gap: .5em;
     align-items: center;
     height: 3.5rem;
-    width: auto;
+    width: stretch;
     padding-left: 2rem;
     
     border-left: 0em solid var(--theme-color);
@@ -48,4 +48,6 @@
 
 .side-bar-tags {
     flex: 1;
+    flex-wrap: wrap;
+    overflow-y: scroll;
 }

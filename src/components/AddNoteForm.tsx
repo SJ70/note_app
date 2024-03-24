@@ -8,7 +8,7 @@ import { Action } from 'redux'
 import { addNoteInTag } from '../modules/tags'
 import '../stylesheets/Form.css'
 import '../stylesheets/NoteForm.css'
-import SetTagsForm from './SetTagsForm'
+import SetTagsForm, { SetTagsType } from './SetTagsForm'
 import '../stylesheets/Animation.css'
 import { ReactComponent as CloseSvg } from '../svgs/close_700.svg';
 
@@ -118,7 +118,7 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({initialTags, visible, setVisib
                     <CloseSvg className='close-btn' onClick={() => setVisible(false)}/>
                 </div>
             </div>
-            <SetTagsForm visible={showSetTagsForm} setVisible={setShowSetTagsForm} selectedTags={tags} setSelectedTags={setTags}/>
+            <SetTagsForm tagsType={SetTagsType.EDIT_TAGS_OF_NOTES} visible={showSetTagsForm} setVisible={setShowSetTagsForm} selectedTags={tags} setSelectedTags={setTags}/>
         </div>
     )
 }

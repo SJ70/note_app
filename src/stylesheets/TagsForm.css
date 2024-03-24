@@ -49,13 +49,13 @@
 .tags-form-tag-name {
     flex: 1;
     text-align: start;
-    font-size: 1.2em;
+    font-size: 1rem;
 
     transition: all .5s;
 }
 
 .tags-form-tag > .svg {
-    font-size: 1.0em;
+    font-size: 1.5rem;
     fill: var(--light-gray);
 }
 
@@ -83,4 +83,12 @@
 .unselected:hover > .tags-form-tag-name {
     font-weight: 500;
     color: black;
+}
+
+.all-tags > .tags-form-tag-name {
+    font-weight: 600;
+}
+
+.all-tags > .svg {
+    fill: white;
 }
