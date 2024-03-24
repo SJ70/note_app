@@ -11,6 +11,11 @@
     border: 1px solid gainsboro;
 }
 
+.half-round-border {
+    border-radius: .5em;
+    border: 1px solid gainsboro;
+}
+
 .spring-on-hover {
     transition: all .5s;
 }

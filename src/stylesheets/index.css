@@ -12,7 +12,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-body, button, input {
+body, button, input, select, textarea {
   font-family: "Noto Sans KR", sans-serif;
 }
 
@@ -32,6 +32,15 @@ button {
   outline: none;
   cursor: pointer;
   transition: all .5s;
+}
+
+input, textarea {
+  outline: none;
+}
+
+select {
+  outline: none;
+  cursor: pointer;
 }
 
 a {

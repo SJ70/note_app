@@ -6,9 +6,11 @@ import { addNote } from '../modules/notes'
 import { INote, Note } from '../interface/INote'
 import { Action } from 'redux'
 import { addNoteInTag } from '../modules/tags'
+import '../stylesheets/Form.css'
 import '../stylesheets/NoteForm.css'
 import SetTagsForm from './SetTagsForm'
 import '../stylesheets/Animation.css'
+import { ReactComponent as CloseSvg } from '../svgs/close_700.svg';
 
 type AddNoteFormProps = {
     visible: boolean
@@ -69,27 +71,37 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     return (
         <div>
             <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
-                <div className='note-form round-border'>
-                    <p id='form-type'>노트 생성하기</p>
-                    <input id='form-title' onChange={(e) => setTitle(e.target.value)} value={title}></input>
-                    <input id='form-content' onChange={(e) => setContent(e.target.value)} value={content} style={{backgroundColor: `${backgroundColor}`}}></input>
+                <div className='note-form form round-border'>
+                    <p className='form-title'>노트 생성하기</p>
+                    <input id='form-title' className='half-round-border' onChange={(e) => setTitle(e.target.value)} value={title}></input>
+                    <textarea id='form-content' className='half-round-border' onChange={(e) => setContent(e.target.value)} value={content} style={{backgroundColor: `${backgroundColor}`}}></textarea>
 
-                    <div className='form-set-tags'>
-                        <button onClick={() => setShowSetTagsForm(true)}>태그 수정</button>
+                    <div className='form-settings'>
+                        <div className='form-set-tags'>
+                            <button className='half-round-border spring-on-hover' onClick={() => setShowSetTagsForm(true)}>태그 수정</button>
+                        </div>
+                        <div>
+                            <span className='form-set-type'>배경색</span>
+                            <select value={backgroundColor} className='half-round-border' onChange={(e) => setBackgroundColor(e.target.value)}>
+                                {backgroundColors.map(bgc => {
+                                    return (
+                                        <option key={bgc.name} value={bgc.value}>{bgc.name}</option>
+                                    )
+                                })}
+                            </select>
+                        </div>
+                        <div>
+                            <span className='form-set-type'>우선순위</span>
+                            <select value={priority} className='half-round-border' onChange={(e) => setPriority(Number(e.target.value))}>
+                                <option key={100} value={100}>High</option>
+                                <option key={50} value={50}>Normal</option>
+                                <option key={0} value={0}>Low</option>
+                            </select>
+                        </div>
                     </div>
-                    <div>
-                        배경색
-                        <select value={backgroundColor} onChange={(e) => setBackgroundColor(e.target.value)}>
-                            {backgroundColors.map(bgc => {
-                                return (
-                                    <option key={bgc.name} value={bgc.value}>{bgc.name}</option>
-                                )
-                            })}
-                        </select>
-                    </div>
-                    <div>set-priority</div>
                     
-                    <button id='form-submit' type='submit' onClick={onSubmit}>생성하기</button>
+                    <button id='form-submit' type='submit' className='half-round-border spring-on-hover' onClick={onSubmit}>생성하기</button>
+                    <CloseSvg className='close-btn' onClick={() => setVisible(false)}/>
                 </div>
             </div>
             <SetTagsForm visible={showSetTagsForm} setVisible={setShowSetTagsForm} selectedTags={tags} setSelectedTags={setTags}/>

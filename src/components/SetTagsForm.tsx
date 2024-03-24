@@ -1,4 +1,5 @@
 import { ITag, Tag } from '../interface/ITag'
+import '../stylesheets/Form.css'
 import '../stylesheets/TagsForm.css'
 import '../stylesheets/Animation.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -46,8 +47,8 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({visible, setVisible, selectedT
 
     return (
         <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
-            <div className='round-border tags-form'>
-                <p className='tags-form-type'>ADD Tags</p>
+            <div className='round-border form tags-form'>
+                <p className='form-title'>태그 수정하기</p>
                 <CloseSvg className='close-btn' onClick={() => setVisible(false)}/>
                 <input type='text' placeholder='new tag...' value={inputTagName} onChange={(e) => setInputTagName(e.target.value)} onKeyPress={(e) => onPressEnter(e)}></input>
                 <ul className='tags-form-tags'>

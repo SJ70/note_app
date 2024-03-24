@@ -1,19 +1,10 @@
 .tags-form {
-    position: inherit;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-
-    z-index: 10;
-
-    background-color: white;
-    padding: 1.25em 0 1.25em 0;
     width: 30%;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
 }
 
-.tags-form-type {
-    font-weight: 600;
-    font-size: 1.2em;
+.tags-form > .form-title {
     margin-left: 1.25rem;
 }
 
@@ -92,23 +83,4 @@
 .unselected:hover > .tags-form-tag-name {
     font-weight: 500;
     color: black;
-}
-
-.close-btn {
-    position: absolute;
-    right: 2.25rem;
-    top: 2.25rem;
-    font-size: 1.75em;
-    transform: translate(50%, -50%);
-
-    cursor: pointer;
-    fill: var(--light-gray);
-
-    transition: all .5s;
-}
-
-.close-btn:hover {
-    font-size: 2.25em;
-    transform: translate(50%, -50%) rotate(180deg);
-    fill: grey;
 }

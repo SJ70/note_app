@@ -33,7 +33,7 @@ const Notes = () => {
             <div className='notes-wrapper'>
 
                 <div className='searching-bar-container'>
-                    <input className='searching-bar round-border' placeholder='검색어를 입력하세요.' value={searchingWord} onChange={(e) => setSearchingWord(e.target.value)}></input>
+                    <input className='searching-bar half-round-border' placeholder='검색어를 입력하세요.' value={searchingWord} onChange={(e) => setSearchingWord(e.target.value)}></input>
                 </div>
 
                 <p className='sub-kind'>Pinned Notes <span>({pinnedNotes.length})</span></p>
