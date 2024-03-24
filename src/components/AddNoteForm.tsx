@@ -69,6 +69,10 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({initialTags, visible, setVisib
         setVisible(false);
     }
 
+    const onDeleteTag = (tag: ITag) => {
+        setTags(tags.filter(t => t !== tag));
+    }
+
     return (
         <div>
             <div className={`backdrop ${visible ? 'appear' : 'disappear'}`}>
@@ -76,6 +80,15 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({initialTags, visible, setVisib
                     <p className='form-title'>노트 생성하기</p>
                     <input id='form-title' className='half-round-border' onChange={(e) => setTitle(e.target.value)} value={title}></input>
                     <textarea id='form-content' className='half-round-border' onChange={(e) => setContent(e.target.value)} value={content} style={{backgroundColor: `${backgroundColor}`}}></textarea>
+
+                    <ul className='tags' style={tags.length === 0 ? {display: 'none'} : {}}>
+                        {tags.map(tag => 
+                            <li key={tag.id} className='tag round-border'>
+                                <span>{tag.name}</span>
+                                <CloseSvg className='delete-tag-btn' onClick={() => onDeleteTag(tag)}/>
+                            </li>
+                        )}
+                    </ul>
 
                     <div className='form-settings'>
                         <div className='form-set-tags'>

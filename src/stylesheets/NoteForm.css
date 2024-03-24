@@ -68,6 +68,13 @@
     justify-content: space-between;
 }
 
-#submit {
+.note-form .tag {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: .25em;
+}
 
+.delete-tag-btn {
+    fill: gray;
 }

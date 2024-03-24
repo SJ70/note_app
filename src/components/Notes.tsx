@@ -4,6 +4,7 @@ import { RootState } from '../modules';
 import { INote } from '../interface/INote';
 import Header from './Header';
 import '../stylesheets/Notes.css'
+import '../stylesheets/Tags.css'
 import '../stylesheets/Note.css'
 import { ReactComponent as UnpinnedSvg } from '../svgs/star_FILL0_400.svg';
 import { ReactComponent as PinnedSvg } from '../svgs/star_FILL1_500.svg';
@@ -65,9 +66,9 @@ const Note: React.FC<NoteProps> = ({note}) => {
         <li className='note round-border spring-on-hover' style={{backgroundColor: note.backgroundColor}} key={note.id}>
             <p className='note-title'>{note.title}</p>
             <p className='note-content'>{note.content}</p>
-            <ul className='note-tags' style={note.tags.length === 0 ? {display: 'none'} : {}}>
+            <ul className='tags' style={note.tags.length === 0 ? {display: 'none'} : {}}>
                 {note.tags.map(tag => 
-                    <li key={tag.id} className='note-tag round-border'>{tag.name}</li>
+                    <li key={tag.id} className='tag round-border'>{tag.name}</li>
                 )}
             </ul>
             <p className='note-date'>{formatString(note.date)}</p>

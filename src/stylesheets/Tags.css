@@ -1,0 +1,13 @@
+.tags {
+    font-size: .645em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: .5em;
+}
+
+.tag {
+    padding: .2em .5em .2em .5em;
+    background-color: ghostwhite;
+    height: 1.5em;
+}

@@ -19,19 +19,28 @@ const Sidebar = () => {
     return (
         <div className='side-bar'>
             <p className='side-bar-title'>Note App</p>
-            <Link className={`${selectedPageId===ALL_NOTES_PAGE_ID ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(ALL_NOTES_PAGE_ID)} to={'/'}>
-                <NotesSvg className='svg'/>
-                <span>Notes</span>
-            </Link>
-            <ul className='side-bar-tags'>
-                {tags.map(tag => (
-                    <li>
-                        <Link className={`${selectedPageId===tag.id ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(tag.id)} key={tag.id} to={`/tag/${tag.id}`}> 
-                            <TagSvg className='svg'/>
-                            <span>{tag.name}</span>
-                        </Link>
-                    </li>
-                ))}
+            <ul>
+                <li>
+                    <Link className={`${selectedPageId===ALL_NOTES_PAGE_ID ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(ALL_NOTES_PAGE_ID)} to={'/'}>
+                    <NotesSvg className='svg'/>
+                    <span>Notes</span>
+                    </Link>
+                </li>
+                <li>
+                    <ul className='side-bar-tags'>
+                        {tags.map(tag => (
+                            <li>
+                                <Link className={`${selectedPageId===tag.id ? 'selected-page' : ''} side-bar-btn`} onClick={() => setSelectedPageId(tag.id)} key={tag.id} to={`/tag/${tag.id}`}> 
+                                    <TagSvg className='svg'/>
+                                    <span>{tag.name}</span>
+                                </Link>
+                            </li>
+                        ))}
+                    </ul>
+                </li>
+                <li>
+                    
+                </li>
             </ul>
         </div>
     )

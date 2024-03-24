@@ -35,20 +35,6 @@
     opacity: 50%;
 }
 
-.note-tags {
-    font-size: .645em;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    gap: .5em;
-}
-
-.note-tag {
-    padding: .2em .5em .2em .5em;
-    background-color: ghostwhite;
-    height: 1.5em;
-}
-
 #switch-pin-btn {
     right: 1.5rem;
     top: 1.75rem;
