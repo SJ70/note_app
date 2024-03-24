@@ -45,6 +45,10 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({tagsType, visible, setVisible,
 
     const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
+            if (inputTagName.length === 0) {
+                window.alert("태그명을 입력해주세요.");
+                return;
+            }
             const newTag: ITag = new Tag(inputTagName);
             addNewTag(newTag);
             onAddTag(newTag);
