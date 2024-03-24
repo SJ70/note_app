@@ -13,6 +13,7 @@ import '../stylesheets/Animation.css'
 import { ReactComponent as CloseSvg } from '../svgs/close_700.svg';
 
 type AddNoteFormProps = {
+    initialTags: ITag[]
     visible: boolean
     setVisible: Function
 }
@@ -29,13 +30,13 @@ const backgroundColors: BackgroundColor[] = [
     {value: '#ddf0ff', name: 'Blue'},
 ];
 
-const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
+const AddNoteForm: React.FC<AddNoteFormProps> = ({initialTags, visible, setVisible}) => {
 
     const notesCount = useSelector((state: RootState) => state.notes.length) + 1;
 
     const [title, setTitle] = useState<string>(`노트 ${notesCount}`);
     const [content, setContent] = useState<string>(`노트 ${notesCount}`);
-    const [tags, setTags] = useState<ITag[]>([]);
+    const [tags, setTags] = useState<ITag[]>(initialTags);
     const [showSetTagsForm, setShowSetTagsForm] = useState<boolean>(false);
     const [backgroundColor, setBackgroundColor] = useState<string>(backgroundColors[0].value);
     const [priority, setPriority] = useState<number>(100);
@@ -43,7 +44,7 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({visible, setVisible}) => {
     const initForm = () => {
         setTitle(`노트 ${notesCount}`);
         setContent(`노트 ${notesCount}`);
-        setTags([]);
+        setTags(initialTags);
         setShowSetTagsForm(false);
         setBackgroundColor(backgroundColors[0].value);
         setPriority(100);
