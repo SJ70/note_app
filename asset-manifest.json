@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/note_app/static/css/main.7472d27f.css",
-    "main.js": "/note_app/static/js/main.b61748a7.js",
+    "main.js": "/note_app/static/js/main.8efbd0ca.js",
     "static/media/edit_note_500.svg": "/note_app/static/media/edit_note_500.c048e5a42f532c68d3a5b24fbd78b30a.svg",
     "static/media/delete_forever_500.svg": "/note_app/static/media/delete_forever_500.8cc49cc40421d6a7a9558e15459c355d.svg",
     "static/media/restore_from_trash500.svg": "/note_app/static/media/restore_from_trash500.3a96123e1489b32cb67862c76b274077.svg",
@@ -15,10 +15,10 @@
     "static/media/close_700.svg": "/note_app/static/media/close_700.fa0af3965ce93cba7e359ea6a88ad910.svg",
     "static/media/remove_700.svg": "/note_app/static/media/remove_700.b29a8579e9a1cfbe2509378b947fe42d.svg",
     "main.7472d27f.css.map": "/note_app/static/css/main.7472d27f.css.map",
-    "main.b61748a7.js.map": "/note_app/static/js/main.b61748a7.js.map"
+    "main.8efbd0ca.js.map": "/note_app/static/js/main.8efbd0ca.js.map"
   },
   "entrypoints": [
     "static/css/main.7472d27f.css",
-    "static/js/main.b61748a7.js"
+    "static/js/main.8efbd0ca.js"
   ]
 }
