@@ -10,6 +10,7 @@ import { useEffect, useState } from 'react'
 import { ReactComponent as AddSvg } from '../svgs/add_700.svg';
 import { ReactComponent as RemoveSvg } from '../svgs/remove_700.svg';
 import { ReactComponent as CloseSvg } from '../svgs/close_700.svg';
+import { refreshNotes } from '../modules/notes'
 
 export enum SetTagsType {
     EDIT_TAGS, EDIT_TAGS_OF_NOTES
@@ -41,7 +42,10 @@ const SetTagsForm: React.FC<SetTagsFormProps> = ({tagsType, visible, setVisible,
         setSelectedTags(selectedTags.filter(t => t !== tag));
     }
 
-    const onRemoveTagFromTags = (tag: ITag) => dispatch(removeTag({tag}) as Action);
+    const onRemoveTagFromTags = (tag: ITag) => {
+        dispatch(refreshNotes() as Action);
+        dispatch(removeTag({tag}) as Action);
+    }
 
     const onPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {

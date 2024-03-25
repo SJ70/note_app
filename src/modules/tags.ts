@@ -20,6 +20,9 @@ const tagsReducer = handleActions<ITag[], any> ({
         return [...state];
     },
     [REMOVE]: (state, {payload: {tag}}) => {
+        for (tag.note of tag.notes) {
+            tag.note.tags = tag.note.tags.filter((t: ITag) => t !== tag);
+        }
         return state.filter(t => t !== tag)
     }
 }, initialState)

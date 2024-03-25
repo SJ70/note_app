@@ -83,7 +83,7 @@ const AddNoteForm: React.FC<AddNoteFormProps> = ({initialTags, visible, setVisib
 
                     <ul className='tags' style={tags.length === 0 ? {display: 'none'} : {}}>
                         {tags.map(tag => 
-                            <li key={tag.id} className='tag round-border'>
+                            <li key={tag.id} className='tag round-border' style={{cursor: 'pointer'}}>
                                 <span>{tag.name}</span>
                                 <CloseSvg className='delete-tag-btn' onClick={() => onDeleteTag(tag)}/>
                             </li>
